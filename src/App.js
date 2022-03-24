@@ -13,11 +13,11 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path='/' exact component={Home} />
-        <Route path='/how-to-play' component={HowToPlay} />
-        <Route path='/easy' component={Easy} />
-        <Route path='/medium' component={Medium} />
-        <Route path='/hard' component={Hard} />
+        <Route path='/' element={<Home />} />
+        <Route path='/how-to-play' element={<HowToPlay />} />
+        <Route path='/easy' element={<Easy />} />
+        <Route path='/medium' element={<Medium />} />
+        <Route path='/hard' element={<Hard />} />
       </Routes>
     </BrowserRouter>
   );
