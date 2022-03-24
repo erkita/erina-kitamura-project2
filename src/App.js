@@ -1,29 +1,25 @@
 import React from 'react';
-import './index.css';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar.js';
+import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages';
-import HowToPlay from './pages/how-to-play';
-import Easy from './pages/easy';
-import Medium from './pages/medium';
-import Hard from './pages/hard';
-
-
+import Home from './components/pages/';
+import HowToPlay from './components/pages/how-to-play';
+import Easy from './components/pages/easy';
+import Medium from './components/pages/medium';
+import Hard from './components/pages/hard';
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path="/how-to-play" element={<HowToPlay />} />
-          <Route path="/easy" element={<Easy />} />
-          <Route path="/medium" element={<Medium />} />
-          <Route path="/hard" element={<Hard />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path='/' exact component={Home} />
+        <Route path='/how-to-play' component={HowToPlay} />
+        <Route path='/easy' component={Easy} />
+        <Route path='/medium' component={Medium} />
+        <Route path='/hard' component={Hard} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

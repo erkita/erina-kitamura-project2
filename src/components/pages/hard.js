@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
+import '../../App.css';
 
-const Medium = () => {
+const Hard = () => {
   return (
     <div
       style={{
@@ -10,9 +11,9 @@ const Medium = () => {
         height: '90vh'
       }}
     >
-       <h1>Medium</h1>
+       <h1>hard</h1>
     </div>
   );
 };
 
-export default Medium;
+export default Hard;
