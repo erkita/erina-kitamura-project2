@@ -9,3 +9,34 @@
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
 }
+
+a {
+  text-decoration: none;
+}
+
+.page-content-containers {
+  width: 100%;
+  margin-top: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-box-home {
+  display: flex;
+  height: 80px;
+  margin-bottom: 3em;
+  text-align: center;
+  width: 30em;
+  background-color: #d4d6da;
+  color: black;
+  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.page-box-home:hover {
+  background-color: #bec5aa;
+}
