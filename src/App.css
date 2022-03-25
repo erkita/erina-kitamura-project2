@@ -97,3 +97,52 @@ a {
   border: 1px solid #787c7e;
   color: white;
 }
+
+.keyboard {
+  width: 700px;
+  height: 300px;
+  margin-top: 60px;
+}
+
+.top-row-keys {
+  display: flex;
+  flex: 33%;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px;
+}
+
+.middle-row-keys {
+  display: flex;
+  flex: 33%;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px;
+}
+
+.bottom-row-keys {
+  display: flex;
+  flex: 33%;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px;
+}
+
+.key {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 60px;
+  border-radius: 4px;
+  margin: 3px;
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+  background-color: #d4d6da;
+  cursor: pointer;
+}
+
+.key.large {
+  width: 80px;
+  font-size: 16px;
+}

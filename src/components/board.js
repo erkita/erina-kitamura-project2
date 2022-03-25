@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import Keyboard from './keyboard';
 
 export default function Board({tries, letters}) {
     const rows = Array(tries).fill(null).map((_, i) => i);
@@ -27,6 +28,8 @@ export default function Board({tries, letters}) {
             </div>
             */}
         </div>
+
+        <Keyboard />
       </>
   )
 }
