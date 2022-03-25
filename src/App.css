@@ -40,3 +40,60 @@ a {
 .page-box-home:hover {
   background-color: #bec5aa;
 }
+
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  color: black;
+}
+
+.board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 350px;
+  height: 420px;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  padding: 3px;
+}
+
+.letter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #d4d6da;
+}
+
+.correct {
+  background-color: #6baa64;
+  border: 1px solid #6baa64;
+  color: white;
+}
+
+.present {
+  background-color: #c9b458;
+  border: 1px solid #c9b458;
+  color: white;
+}
+
+.absent {
+  background-color: #787c7e;
+  border: 1px solid #787c7e;
+  color: white;
+}

@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import Navbar from './components/Navbar/Navbar.js';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Board from "./components/board";
 import Home from './components/pages/';
 import HowToPlay from './components/pages/how-to-play';
 import Easy from './components/pages/easy';
 import Medium from './components/pages/medium';
 import Hard from './components/pages/hard';
 
+export const GameContext = createContext();
+
 function App() {
+  const [board, setBoard] =  useState(JSON.parse(localStorage.getItem("boardState")));
+
   return (
     <>
       <BrowserRouter>
@@ -21,21 +26,6 @@ function App() {
           <Route path='/hard' element={<Hard />} />
         </Routes>
       </BrowserRouter>
-
-      {/* <div class="page-content-containers">
-        <a href="/how-to-play">
-            <div class="page-box-home">How To Play</div>
-        </a>
-        <a href="/easy">
-            <div class="page-box-home">Play Easy</div>
-        </a>
-        <a href="/medium">
-            <div class="page-box-home">Play Medium</div>
-        </a>
-        <a href="/hard">
-            <div class="page-box-home">Play Hard</div>
-        </a>  
-      </div> */}
     </>
   );
 }
