@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { GameContext } from "../App";
 
 export default function Key({ keyLetter, largeKey }) {
-  return (
-    <div className={largeKey ? "key large" : "key"}>{keyLetter}</div>
-  )
+  //   const clickLetter = () => {
+  //     const boardState = [...board];
+  //   };
+  return <div className={largeKey ? "key large" : "key"}>{keyLetter}</div>;
 }

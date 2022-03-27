@@ -1,11 +1,19 @@
-import React from 'react';
-import '../../App.css';
+import React, { useState } from "react";
+import "../../App.css";
+import { createContext } from "react";
 import Board from "../board";
+import { initialEasyBoard } from "../solution-word";
+
+export const EasyContext = createContext();
 
 export default function Easy() {
+  const [board, setBoard] = useState(initialEasyBoard);
+
   return (
     <>
-      <Board rows={7} letters={5}/>
+      <EasyContext.Provider value={{ board, setBoard }}>
+        <Board level={"easy"} />
+      </EasyContext.Provider>
     </>
   );
 }

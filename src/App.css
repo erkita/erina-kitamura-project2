@@ -102,6 +102,7 @@ a {
   width: 700px;
   height: 300px;
   margin-top: 60px;
+  margin: 0 auto;
 }
 
 .top-row-keys {
