@@ -1,33 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { EasyContext } from "./pages/easy";
 // import { MediumContext } from "./pages/medium";
 // import { HardContext } from "./pages/hard";
 import Keyboard from "./keyboard";
+import * as gameConstant from "./game-state";
 import "../App.css";
 
-export default function Board({ level }) {
-  const { board } = useContext(EasyContext);
+export const BoardContext = createContext();
 
-  const tries = {
-    easy: 7,
-    medium: 6,
-    hard: 5,
-  };
-  const wordLength = {
-    easy: 5,
-    medium: 6,
-    hard: 7,
-  };
+export default function Board() {
+  const { board, setBoard, numAttempt, setNumAttempt, level } =
+    useContext(EasyContext);
+
+  const solutionWord = "ABOUT"; // todo:  resolve
 
   const getRows = function (level) {
-    let numTries = tries[level];
+    let numTries = gameConstant.tries[level];
     return Array(numTries)
       .fill(null)
       .map((_, i) => i);
   };
 
   const getColumns = function (level) {
-    let numletters = wordLength[level];
+    let numletters = gameConstant.wordLength[level];
     return Array(numletters)
       .fill(null)
       .map((_, i) => i);
@@ -36,6 +31,55 @@ export default function Board({ level }) {
   let rows = getRows(level);
   let columns = getColumns(level);
 
+  const clickEnter = () => {
+    if (numAttempt.letterIndex < gameConstant.wordLength[level]) return;
+    setNumAttempt({
+      attempt: numAttempt.attempt + 1,
+      letterIndex: 0,
+    });
+  };
+
+  const clickBackspace = () => {
+    if (numAttempt.letterIndex === 0) return;
+    const boardState = [...board];
+    boardState[numAttempt.attempt][numAttempt.letterIndex - 1] = "";
+    setNumAttempt({ ...numAttempt, letterIndex: numAttempt.letterIndex - 1 });
+    setBoard(boardState);
+  };
+
+  const clickLetter = (keyLetter) => {
+    if (numAttempt.letterIndex > gameConstant.tries[level] - 1) return;
+    const boardState = [...board];
+    boardState[numAttempt.attempt][numAttempt.letterIndex] = keyLetter;
+    setNumAttempt({ ...numAttempt, letterIndex: numAttempt.letterIndex + 1 });
+    setBoard(boardState);
+  };
+
+  const isCorrectLetter = function (row, col) {
+    return solutionWord[col] === board[row][col];
+  };
+
+  const isPresentLetter = function (row, col) {
+    return (
+      board[row][col] !== "" &&
+      !isCorrectLetter(row, col) &&
+      solutionWord.includes(board[row][col])
+    );
+  };
+
+  const getGridColor = function (row, col) {
+    if (numAttempt.attempt > row) {
+      if (isCorrectLetter(row, col)) {
+        return "correct";
+      } else if (isPresentLetter(row, col)) {
+        return "present";
+      } else {
+        return "absent";
+      }
+    }
+    return "";
+  };
+
   return (
     <>
       <div className="message">message</div>
@@ -43,25 +87,23 @@ export default function Board({ level }) {
         {rows.map((row, i) => (
           <div key={i} className="grid">
             {columns.map((col, j) => (
-              <div key={j} className="letter ">
+              <div key={j} className={`letter ${getGridColor(row, col)}`}>
                 {board[row][col]}
               </div>
             ))}
           </div>
         ))}
-
-        {/* 
-            <div className="grid">
-                <div className="letter correct">A</div>
-                <div className="letter present">A</div>
-                <div className="letter absent">A</div>
-                <div className="letter">A</div>
-                <div className="letter">A</div>
-            </div>
-            */}
       </div>
 
-      <Keyboard />
+      <BoardContext.Provider
+        value={{
+          clickEnter,
+          clickBackspace,
+          clickLetter,
+        }}
+      >
+        <Keyboard />
+      </BoardContext.Provider>
     </>
   );
 }

@@ -1,9 +1,22 @@
 import React, { useContext } from "react";
-import { GameContext } from "../App";
+import { BoardContext } from "./board";
 
 export default function Key({ keyLetter, largeKey }) {
-  //   const clickLetter = () => {
-  //     const boardState = [...board];
-  //   };
-  return <div className={largeKey ? "key large" : "key"}>{keyLetter}</div>;
+  const { clickEnter, clickBackspace, clickLetter } = useContext(BoardContext);
+
+  const handleKeyClick = () => {
+    if (keyLetter === "ENTER") {
+      clickEnter();
+    } else if (keyLetter === "\u232b") {
+      clickBackspace();
+    } else {
+      clickLetter(keyLetter);
+    }
+  };
+
+  return (
+    <div className={largeKey ? "key large" : "key"} onClick={handleKeyClick}>
+      {keyLetter}
+    </div>
+  );
 }

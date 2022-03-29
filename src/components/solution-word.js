@@ -39,10 +39,11 @@ const getLetterString = function (index) {
 };
 
 export default function solutionWordReducer() {
-  let firstLetter = getRandomLetterIndex(26);
+  let firstLetterIndex = getRandomLetterIndex(26);
+  let firstLetter = getLetterString(firstLetterIndex);
   let wordIndex = getRandomLetterIndex(
-    fiveLetterWordBank[getLetterString(firstLetter)].length
+    fiveLetterWordBank[getLetterString(firstLetterIndex)].length
   );
   // resolve fiveWordBank -> 5, 6, or 7
-  return;
+  return fiveLetterWordBank[firstLetter][wordIndex];
 }
