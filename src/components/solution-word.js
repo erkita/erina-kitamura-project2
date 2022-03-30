@@ -38,12 +38,21 @@ const getLetterString = function (index) {
   return String.fromCharCode(97 + index);
 };
 
-export default function solutionWordReducer() {
+const getSolutionWord = function (level) {
+  if (level === "easy") {
+    solutionWordReducer(fiveLetterWordBank);
+  } else if (level === "medium") {
+    solutionWordReducer(sixLetterWordBank);
+  } else if (level === "hard") {
+    solutionWordReducer(sevenLetterWordBank);
+  }
+};
+
+export default function solutionWordReducer(wordBank) {
   let firstLetterIndex = getRandomLetterIndex(26);
   let firstLetter = getLetterString(firstLetterIndex);
   let wordIndex = getRandomLetterIndex(
-    fiveLetterWordBank[getLetterString(firstLetterIndex)].length
+    wordBank[getLetterString(firstLetterIndex)].length
   );
-  // resolve fiveWordBank -> 5, 6, or 7
-  return fiveLetterWordBank[firstLetter][wordIndex];
+  return wordBank[firstLetter][wordIndex];
 }

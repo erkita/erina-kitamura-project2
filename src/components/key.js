@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { BoardContext } from "./board";
 
 export default function Key({ keyLetter, largeKey }) {
-  const { clickEnter, clickBackspace, clickLetter } = useContext(BoardContext);
+  const { clickEnter, clickBackspace, clickLetter, letterHints } =
+    useContext(BoardContext);
 
   const handleKeyClick = () => {
     if (keyLetter === "ENTER") {
@@ -15,7 +16,11 @@ export default function Key({ keyLetter, largeKey }) {
   };
 
   return (
-    <div className={largeKey ? "key large" : "key"} onClick={handleKeyClick}>
+    <div
+      className={largeKey ? "key large" : "key"}
+      id={letterHints[keyLetter]}
+      onClick={handleKeyClick}
+    >
       {keyLetter}
     </div>
   );

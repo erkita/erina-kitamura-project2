@@ -10,6 +10,7 @@ export const EasyContext = createContext();
 export default function Easy() {
   const [board, setBoard] = useState(initialEasyBoard);
   const [numAttempt, setNumAttempt] = useState(gameState.guessAttempts);
+  const [letterHints, setLetterHints] = useState({});
   const level = "easy";
 
   // const [solutionWord, setSolutionWord] = useState(solution);
@@ -22,10 +23,12 @@ export default function Easy() {
           setBoard,
           numAttempt,
           setNumAttempt,
+          letterHints,
+          setLetterHints,
           level,
         }}
       >
-        <Board level={"easy"} />
+        <Board />
       </EasyContext.Provider>
     </>
   );

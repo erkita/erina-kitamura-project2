@@ -80,19 +80,19 @@ a {
   border: 1px solid #d4d6da;
 }
 
-.correct {
+#correct {
   background-color: #6baa64;
   border: 1px solid #6baa64;
   color: white;
 }
 
-.present {
+#present {
   background-color: #c9b458;
   border: 1px solid #c9b458;
   color: white;
 }
 
-.absent {
+#absent {
   background-color: #787c7e;
   border: 1px solid #787c7e;
   color: white;
