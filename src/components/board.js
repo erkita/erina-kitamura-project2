@@ -3,6 +3,7 @@ import { EasyContext } from "./pages/easy";
 // import { MediumContext } from "./pages/medium";
 // import { HardContext } from "./pages/hard";
 import Keyboard from "./keyboard";
+import GameOver from "./GameOver";
 import * as gameConstant from "./game-state";
 import { getSolutionWord } from "./solution-word";
 import "../App.css";
@@ -17,10 +18,12 @@ export default function Board() {
     setNumAttempt,
     letterHints,
     setLetterHints,
+    gameOver,
+    setGameOver,
+    solutionWord,
+    setSolutionWord,
     level,
   } = useContext(EasyContext);
-
-  const solutionWord = "ABOUT"; // todo:  resolve
 
   const getRows = function (level) {
     let numTries = gameConstant.tries[level];
@@ -44,12 +47,21 @@ export default function Board() {
     return guessedWord === solutionWord;
   };
 
+  const handleGameEnd = () => {
+    if (isCorrectWord()) {
+      setGameOver({ gameOver: true, userWon: true });
+    } else if (numAttempt.attempt === gameConstant.tries[level] - 1) {
+      setGameOver({ gameOver: true, userWon: false });
+    }
+  };
+
   const clickEnter = () => {
     if (numAttempt.letterIndex < gameConstant.wordLength[level]) return;
     setNumAttempt({
       attempt: numAttempt.attempt + 1,
       letterIndex: 0,
     });
+    handleGameEnd();
   };
 
   const clickBackspace = () => {
@@ -80,19 +92,6 @@ export default function Board() {
     );
   };
 
-  const getGridColor = function (row, col) {
-    if (numAttempt.attempt > row) {
-      if (isCorrectLetter(row, col)) {
-        return "correct";
-      } else if (isPresentLetter(row, col)) {
-        return "present";
-      } else {
-        return "absent";
-      }
-    }
-    return "";
-  };
-
   const getPresentLetters = function () {
     return board[numAttempt.attempt - 1].filter((letter) =>
       solutionWord.includes(letter)
@@ -116,6 +115,19 @@ export default function Board() {
     return newLetterHints;
   };
 
+  const getGridColor = function (row, col) {
+    if (numAttempt.attempt > row) {
+      if (isCorrectLetter(row, col)) {
+        return "correct";
+      } else if (isPresentLetter(row, col)) {
+        return "present";
+      } else {
+        return "absent";
+      }
+    }
+    return "";
+  };
+
   useEffect(() => {
     if (numAttempt.attempt > 0) {
       let presentLetters = getPresentLetters();
@@ -127,7 +139,7 @@ export default function Board() {
 
   return (
     <>
-      <div className="message">message</div>
+      <GameOver />
       <div className="board-container">
         {rows.map((row, i) => (
           <div key={i} className="grid">
@@ -147,6 +159,7 @@ export default function Board() {
           clickLetter,
           letterHints,
           setLetterHints,
+          solutionWord,
         }}
       >
         <Keyboard />
