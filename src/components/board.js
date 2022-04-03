@@ -3,14 +3,15 @@ import { EasyContext } from "./pages/easy";
 // import { MediumContext } from "./pages/medium";
 // import { HardContext } from "./pages/hard";
 import Keyboard from "./keyboard";
-import GameOver from "./GameOver";
+import Message from "./Message";
 import * as gameConstant from "./game-state";
-import { getSolutionWord } from "./solution-word";
 import "../App.css";
 
 export const BoardContext = createContext();
 
 export default function Board() {
+  const [message, setMessage] = useState("");
+  const [isEntered, setIsEntered] = useState(false);
   const {
     board,
     setBoard,
@@ -21,7 +22,6 @@ export default function Board() {
     gameOver,
     setGameOver,
     solutionWord,
-    setSolutionWord,
     level,
   } = useContext(EasyContext);
 
@@ -56,6 +56,7 @@ export default function Board() {
   };
 
   const clickEnter = () => {
+    setIsEntered(true);
     if (numAttempt.letterIndex < gameConstant.wordLength[level]) return;
     setNumAttempt({
       attempt: numAttempt.attempt + 1,
@@ -65,6 +66,7 @@ export default function Board() {
   };
 
   const clickBackspace = () => {
+    setIsEntered(false);
     if (numAttempt.letterIndex === 0) return;
     const boardState = [...board];
     boardState[numAttempt.attempt][numAttempt.letterIndex - 1] = "";
@@ -73,6 +75,7 @@ export default function Board() {
   };
 
   const clickLetter = (keyLetter) => {
+    setIsEntered(false);
     if (numAttempt.letterIndex > gameConstant.tries[level] - 1) return;
     const boardState = [...board];
     boardState[numAttempt.attempt][numAttempt.letterIndex] = keyLetter;
@@ -129,7 +132,7 @@ export default function Board() {
   };
 
   useEffect(() => {
-    if (numAttempt.attempt > 0) {
+    if (numAttempt.attempt > 0 && !gameOver.userWon) {
       let presentLetters = getPresentLetters();
       let absentLetters = getAbsentLetters();
       let newLetterHints = addNewLetterHints(presentLetters, absentLetters);
@@ -139,19 +142,6 @@ export default function Board() {
 
   return (
     <>
-      <GameOver />
-      <div className="board-container">
-        {rows.map((row, i) => (
-          <div key={i} className="grid">
-            {columns.map((col, j) => (
-              <div key={j} className="letter" id={getGridColor(row, col)}>
-                {board[row][col]}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-
       <BoardContext.Provider
         value={{
           clickEnter,
@@ -160,8 +150,27 @@ export default function Board() {
           letterHints,
           setLetterHints,
           solutionWord,
+          numAttempt,
+          gameOver,
+          message,
+          setMessage,
+          isEntered,
+          setIsEntered,
         }}
       >
+        <Message />
+        <div className="board-container">
+          {rows.map((row, i) => (
+            <div key={i} className="grid">
+              {columns.map((col, j) => (
+                <div key={j} className="letter" id={getGridColor(row, col)}>
+                  {board[row][col]}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+
         <Keyboard />
       </BoardContext.Provider>
     </>
