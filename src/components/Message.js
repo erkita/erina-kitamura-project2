@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { BoardContext } from "./board";
+import { BoardContext } from "./Board";
 
 export default function Message() {
   const {

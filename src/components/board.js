@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { EasyContext } from "./pages/easy";
+import { EasyContext } from "./pages/Easy";
 // import { MediumContext } from "./pages/medium";
 // import { HardContext } from "./pages/hard";
-import Keyboard from "./keyboard";
+import Keyboard from "./Keyboard";
 import Message from "./Message";
-import * as gameConstant from "./game-state";
+import * as gameConstant from "./GameState";
 import "../App.css";
 
 export const BoardContext = createContext();

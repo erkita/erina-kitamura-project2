@@ -3,10 +3,10 @@ import Navbar from "./components/Navbar/Navbar.js";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/pages/";
-import HowToPlay from "./components/pages/how-to-play";
-import Easy from "./components/pages/easy";
-import Medium from "./components/pages/medium";
-import Hard from "./components/pages/hard";
+import HowToPlay from "./components/pages/HowToPlay";
+import Easy from "./components/pages/Easy";
+import Medium from "./components/pages/Medium";
+import Hard from "./components/pages/Hard";
 
 export const GameContext = createContext();
 

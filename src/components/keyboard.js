@@ -1,5 +1,5 @@
 import React from "react";
-import Key from "./key";
+import Key from "./Key";
 
 export default function Keyboard() {
   const topRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];

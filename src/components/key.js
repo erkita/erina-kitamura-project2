@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { BoardContext } from "./board";
+import { BoardContext } from "./Board";
 
 export default function Key({ keyLetter, largeKey }) {
   const { clickEnter, clickBackspace, clickLetter, letterHints, gameOver } =

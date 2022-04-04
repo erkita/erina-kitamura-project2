@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "../../App.css";
 import { createContext } from "react";
-import Board from "../board";
-import { initialEasyBoard, getSolutionWord } from "../solution-word";
-import * as gameState from "../game-state";
+import Board from "../Board";
+import { initialEasyBoard, getSolutionWord } from "../SolutionWord";
+import * as gameState from "../GameState";
 
 export const EasyContext = createContext();
 
