@@ -1,19 +1,16 @@
-import React from 'react';
-import '../../App.css';
+import React from "react";
+import "../../App.css";
+import Board from "../Board";
+import GameContextWrapper from "../GameContextWrapper";
 
 export default function Medium() {
+  const level = "medium";
+
   return (
     <>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '90vh'
-        }}
-      >
-        <h1>Medium</h1>
-      </div>
+      <GameContextWrapper level={level}>
+        <Board />
+      </GameContextWrapper>
     </>
   );
 }

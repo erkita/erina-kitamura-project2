@@ -1,19 +1,16 @@
-import React from 'react';
-import '../../App.css';
+import React from "react";
+import "../../App.css";
+import Board from "../Board";
+import GameContextWrapper from "../GameContextWrapper";
 
-const Hard = () => {
+export default function Hard() {
+  const level = "hard";
+
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '90vh'
-      }}
-    >
-       <h1>hard</h1>
-    </div>
+    <>
+      <GameContextWrapper level={level}>
+        <Board />
+      </GameContextWrapper>
+    </>
   );
-};
-
-export default Hard;
+}

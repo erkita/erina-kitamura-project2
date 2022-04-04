@@ -1,41 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import "../../App.css";
-import { createContext } from "react";
 import Board from "../Board";
-import { initialEasyBoard, getSolutionWord } from "../SolutionWord";
-import * as gameState from "../GameState";
-
-export const EasyContext = createContext();
+import GameContextWrapper from "../GameContextWrapper";
 
 export default function Easy() {
   const level = "easy";
-  const solution = getSolutionWord(level);
-
-  const [board, setBoard] = useState(initialEasyBoard);
-  const [numAttempt, setNumAttempt] = useState(gameState.guessAttempts);
-  const [letterHints, setLetterHints] = useState({});
-  const [gameOver, setGameOver] = useState({ gameOver: false, userWon: false });
-  const [solutionWord, setSolutionWord] = useState(solution);
 
   return (
     <>
-      <EasyContext.Provider
-        value={{
-          board,
-          setBoard,
-          numAttempt,
-          setNumAttempt,
-          letterHints,
-          setLetterHints,
-          gameOver,
-          setGameOver,
-          solutionWord,
-          setSolutionWord,
-          level,
-        }}
-      >
+      <GameContextWrapper level={level}>
         <Board />
-      </EasyContext.Provider>
+      </GameContextWrapper>
     </>
   );
 }

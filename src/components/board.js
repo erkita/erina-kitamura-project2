@@ -1,7 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { EasyContext } from "./pages/Easy";
-// import { MediumContext } from "./pages/medium";
-// import { HardContext } from "./pages/hard";
+import { GameContext } from "./GameContextWrapper";
 import Keyboard from "./Keyboard";
 import Message from "./Message";
 import * as gameConstant from "./GameState";
@@ -12,6 +10,7 @@ export const BoardContext = createContext();
 export default function Board() {
   const [message, setMessage] = useState("");
   const [isEntered, setIsEntered] = useState(false);
+
   const {
     board,
     setBoard,
@@ -23,7 +22,7 @@ export default function Board() {
     setGameOver,
     solutionWord,
     level,
-  } = useContext(EasyContext);
+  } = useContext(GameContext);
 
   const getRows = function (level) {
     let numTries = gameConstant.tries[level];
@@ -34,6 +33,7 @@ export default function Board() {
 
   const getColumns = function (level) {
     let numletters = gameConstant.wordLength[level];
+    console.log(numletters);
     return Array(numletters)
       .fill(null)
       .map((_, i) => i);
