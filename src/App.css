@@ -41,6 +41,23 @@ a {
   background-color: #bec5aa;
 }
 
+button {
+  background-color: #6baa64;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  padding: 10px;
+  font-weight: 600;
+}
+
+.reset-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .message-container {
   display: flex;
   justify-content: center;

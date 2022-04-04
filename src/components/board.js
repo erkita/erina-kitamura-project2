@@ -131,6 +131,10 @@ export default function Board() {
     return "";
   };
 
+  const refreshPage = function () {
+    window.location.reload(false);
+  };
+
   useEffect(() => {
     if (numAttempt.attempt > 0 && !gameOver.userWon) {
       let presentLetters = getPresentLetters();
@@ -173,6 +177,9 @@ export default function Board() {
 
         <Keyboard />
       </BoardContext.Provider>
+      <button className="reset-button" onClick={refreshPage}>
+        Play new game
+      </button>
     </>
   );
 }
