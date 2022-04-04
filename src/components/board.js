@@ -33,7 +33,6 @@ export default function Board() {
 
   const getColumns = function (level) {
     let numletters = gameConstant.wordLength[level];
-    console.log(numletters);
     return Array(numletters)
       .fill(null)
       .map((_, i) => i);
@@ -76,7 +75,7 @@ export default function Board() {
 
   const clickLetter = (keyLetter) => {
     setIsEntered(false);
-    if (numAttempt.letterIndex > gameConstant.tries[level] - 1) return;
+    if (numAttempt.letterIndex > gameConstant.wordLength[level]) return;
     const boardState = [...board];
     boardState[numAttempt.attempt][numAttempt.letterIndex] = keyLetter;
     setNumAttempt({ ...numAttempt, letterIndex: numAttempt.letterIndex + 1 });

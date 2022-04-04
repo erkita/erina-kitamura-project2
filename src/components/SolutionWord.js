@@ -29,8 +29,8 @@ export const initialHardBoard = [
   ["", "", "", "", "", "", ""],
 ];
 
-const getRandomLetterIndex = function (max) {
-  return Math.floor(Math.random() * max);
+const getRandomLetterIndex = function (max_exclusive) {
+  return Math.floor(Math.random() * max_exclusive);
 };
 
 const getLetterString = function (index) {
@@ -40,9 +40,7 @@ const getLetterString = function (index) {
 const solutionWordReducer = function (wordBank) {
   let firstLetterIndex = getRandomLetterIndex(26);
   let firstLetter = getLetterString(firstLetterIndex);
-  let wordIndex = getRandomLetterIndex(
-    wordBank[getLetterString(firstLetterIndex)].length
-  );
+  let wordIndex = getRandomLetterIndex(wordBank[firstLetter].length);
   return wordBank[firstLetter][wordIndex];
 };
 

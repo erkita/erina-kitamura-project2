@@ -8,7 +8,6 @@ import * as gameState from "./GameState";
 export const GameContext = createContext();
 
 export default function GameContextWrapper(props) {
-  console.log("game context " + props.level);
   const level = props.level;
   const solution = solutionWordConst.getSolutionWord(level);
 
