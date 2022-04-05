@@ -1,8 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import { BoardContext } from "./Board";
+import $ from "jquery";
+window.$ = $;
 
 export default function Message() {
   const {
+    board,
     solutionWord,
     gameOver,
     message,

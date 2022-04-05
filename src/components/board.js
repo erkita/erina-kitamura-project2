@@ -147,6 +147,7 @@ export default function Board() {
     <>
       <BoardContext.Provider
         value={{
+          board,
           clickEnter,
           clickBackspace,
           clickLetter,

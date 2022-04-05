@@ -41,6 +41,15 @@ a {
   background-color: #bec5aa;
 }
 
+.game-rules {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  width: 40%;
+  height: auto;
+}
+
 button {
   background-color: #6baa64;
   border: none;
@@ -85,7 +94,7 @@ button {
   height: 420px;
   margin: auto;
   margin-top: 40px;
-  margin-bottom: 80px;
+  margin-bottom: 70px;
 }
 
 .grid {
@@ -129,7 +138,7 @@ button {
 .keyboard {
   width: 700px;
   height: 300px;
-  margin-top: 60px;
+  margin-top: 50px;
   margin: 0 auto;
 }
 
