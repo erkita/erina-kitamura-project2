@@ -1,9 +1,13 @@
-import React from 'react';
+import React from "react";
+import logo from "../../images/wordle_logo.png";
 
 export default function Home() {
   return (
     <>
       <div class="page-content-containers">
+        <div>
+          <img src={logo} alt="Wordle logo" className="wordle-logo"></img>
+        </div>
         <a href="/how-to-play">
           <div class="page-box-home">How To Play</div>
         </a>
@@ -15,7 +19,7 @@ export default function Home() {
         </a>
         <a href="/hard">
           <div class="page-box-home">Play Hard</div>
-        </a>  
+        </a>
       </div>
     </>
   );

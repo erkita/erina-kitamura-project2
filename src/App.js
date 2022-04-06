@@ -8,8 +8,6 @@ import Easy from "./components/pages/Easy";
 import Medium from "./components/pages/Medium";
 import Hard from "./components/pages/Hard";
 
-export const GameContext = createContext();
-
 function App() {
   return (
     <>

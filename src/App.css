@@ -16,11 +16,20 @@ a {
 
 .page-content-containers {
   width: 100%;
-  margin-top: 140px;
+  margin-top: 3em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.wordle-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3em;
+  width: 40%;
+  height: auto;
 }
 
 .page-box-home {
