@@ -70,7 +70,7 @@ export default function Board() {
     setBoard(boardState);
   };
 
-  const getKeyColor = function (row, col) {
+  const getBoardGridColor = function (row, col) {
     if (numAttempt.attempt > row) {
       if (letterHelper.isCorrectLetter(row, col, solutionWord, board)) {
         return "correct";
@@ -89,10 +89,16 @@ export default function Board() {
 
   useEffect(() => {
     if (numAttempt.attempt > 0 && !gameOver.userWon) {
-      let presentLetters = letterHelper.getPresentLetters(
+      let correctLetters = letterHelper.getCorrectLetters(
         board,
         numAttempt.attempt,
         solutionWord
+      );
+      let presentLetters = letterHelper.getPresentLetters(
+        board,
+        numAttempt.attempt,
+        solutionWord,
+        correctLetters
       );
       let absentLetters = letterHelper.getAbsentLetters(
         board,
@@ -100,6 +106,7 @@ export default function Board() {
         solutionWord
       );
       let newLetterHints = letterHelper.addNewLetterHints(
+        correctLetters,
         presentLetters,
         absentLetters,
         letterHints
@@ -132,7 +139,11 @@ export default function Board() {
           {rows.map((row, i) => (
             <div key={i} className="grid">
               {columns.map((col, j) => (
-                <div key={j} className="letter" id={getKeyColor(row, col)}>
+                <div
+                  key={j}
+                  className="letter"
+                  id={getBoardGridColor(row, col)}
+                >
                   {board[row][col]}
                 </div>
               ))}
