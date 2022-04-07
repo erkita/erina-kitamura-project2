@@ -3,8 +3,8 @@ import { GameContext } from "./GameContextWrapper";
 import Keyboard from "./Keyboard";
 import Message from "./Message";
 import * as gameConstant from "./GameState";
-import * as letterHelper from "./LetterValidationHelper";
-import * as locHelper from "./RowColumnHelper";
+import * as letterHelper from "./helpers/LetterValidationHelper";
+import * as locHelper from "./helpers/RowColumnHelper";
 import "../App.css";
 
 export const BoardContext = createContext();
