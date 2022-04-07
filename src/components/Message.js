@@ -24,10 +24,10 @@ export default function Message() {
     } else if (numAttempt.letterIndex === 0 && isEntered) {
       newMessage = "";
     } else if (isEntered && numAttempt.letterIndex < solutionWord.length) {
+      newMessage = "Enter longer word with " + solutionWord.length + " letters";
+    } else if (numAttempt.letterIndex > solutionWord.length && !isEntered) {
       newMessage =
         "Enter shorter word with " + solutionWord.length + " letters";
-    } else if (numAttempt.letterIndex > solutionWord.length && !isEntered) {
-      newMessage = "Enter longer word with " + solutionWord.length + " letters";
     } else {
       newMessage = "";
     }
