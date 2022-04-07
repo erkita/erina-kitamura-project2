@@ -5,7 +5,6 @@ window.$ = $;
 
 export default function Message() {
   const {
-    board,
     solutionWord,
     gameOver,
     message,
