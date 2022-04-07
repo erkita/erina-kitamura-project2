@@ -11,5 +11,3 @@ export default function HowToPlay() {
     </>
   );
 }
-
-// alt = "Wordle rules, source: https://www.nytimes.com/games/wordle/index.html";
