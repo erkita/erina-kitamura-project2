@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { GameContext } from "./GameContextWrapper";
 import Keyboard from "./Keyboard";
 import Message from "./Message";
+import DisplayLetter from "./DisplayLetter";
 import * as gameConstant from "./GameState";
 import * as letterHelper from "./helpers/LetterValidationHelper";
 import * as locHelper from "./helpers/RowColumnHelper";
@@ -139,13 +140,11 @@ export default function Board() {
           {rows.map((row, i) => (
             <div key={i} className="grid">
               {columns.map((col, j) => (
-                <div
+                <DisplayLetter
                   key={j}
-                  className="letter"
                   id={getBoardGridColor(row, col)}
-                >
-                  {board[row][col]}
-                </div>
+                  letter={board[row][col]}
+                />
               ))}
             </div>
           ))}
